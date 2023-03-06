@@ -1,10 +1,10 @@
 [package]
 name = "chat-gpt-rs"
 description = "Rust API Client for OpenAI's GPT3.5 (ChatGPT) API."
-version = "1.0.0"
+version = "1.1.0"
 repository = "https://github.com/AidenHadisi/chat-gpt-rs"
 authors = ["Aiden Hadisi"]
-keywords = ["gpt3.5", "chatgpt", "openai", "ai", "gpt"]
+keywords = ["gpt3", "chatgpt", "openai", "ai", "gpt"]
 license = "MIT"
 edition = "2021"
 
