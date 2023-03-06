@@ -1,3 +1,7 @@
+//! OpenAI API client.
+//! 
+//! Communicates with the OpenAI API to send chat requests and receive chat completions.
+
 use reqwest::{
     header::{HeaderMap, HeaderValue, AUTHORIZATION, CONTENT_TYPE},
     Client,

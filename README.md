@@ -5,28 +5,27 @@ Communicate with OpenAi's GPT3.5 (ChatGPT) API.
 ## Usage
     
 ```rs
+use chat_gpt_rs::prelude::*;
+
+#[tokio::main]
+async fn main() {
     let token = Token::new("YOUR_API_KEY");
-
     let api = Api::new(token);
-
     let request = Request {
         model: Model::Gpt35Turbo,
-        messages: vec![
-            Message {
-                role: "user".to_string(),
-                content: "Hello, how's it going?".to_string(),
-            },
-        ],
+        messages: vec![Message {
+            role: "user".to_string(),
+            content: "Hello, how's it going?".to_string(),
+        }],
         ..Default::default()
     };
-
     let response = api.chat(request).await;
-
     if let Ok(response) = response {
         println!("{:?}", response.choices[0].message.content);
     } else {
         println!("Error: {:?}", response.err());
-    }    
+    }
+}   
 ```
 
 ## Additional Configuration
