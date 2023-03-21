@@ -1,4 +1,4 @@
-//! An API Client to communicate with the OpenAI's GPT-3.5 aka ChatGPT API.
+//! An API Client to communicate with the OpenAI's GPT-3.5 and GPT-4 aka ChatGPT API.
 //!
 //! # Example
 //! ```rs

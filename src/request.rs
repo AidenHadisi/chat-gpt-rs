@@ -1,7 +1,7 @@
 //! Data structures for the request to the OpenAI API amd response from the OpenAI API.
 
 #[derive(serde::Serialize, Default)]
-/// gpt-3.5 models that are supported by the OpenAI API.
+/// gpt-3.5 and gpt-4 models that are supported by the OpenAI API.
 pub enum Model {
     /// gpt-3.5-turbo model.
     #[default]
@@ -11,6 +11,19 @@ pub enum Model {
     /// gpt-3.5-turbo-0301 model.
     #[serde(rename = "gpt-3.5-turbo-0301")]
     Gpt35Turbo0301,
+
+    #[serde(rename = "gpt-4")]
+    Gpt4,
+
+    #[serde(rename = "gpt-4-0314")]
+    Gpt4_0314,
+
+    #[serde(rename = "gpt-4-32k")]
+    Gpt4_32k,
+
+    #[serde(rename = "gpt-4-32k-0314")]
+    Gpt4_32k0314,
+
 }
 
 #[derive(serde::Deserialize)]
