@@ -1,6 +1,6 @@
 # ChatGPT Rust
 
-Communicate with OpenAi's GPT3.5 (ChatGPT) API.
+Communicate with OpenAi's GPT3.5 and GPT4 (ChatGPT) API.
 
 ## Usage
     
@@ -31,7 +31,7 @@ async fn main() {
 ## Additional Configuration
 
 Following configuration options are available in the `Request` struct:
-- `Model`: ID of the model to use. Currently, only `gpt-3.5-turbo` and `gpt-3.5-turbo-0301` are supported.
+- `Model`: ID of the model to use. All GPT3 and GPT4 models are supported.
 - `Messages`: messages to generate chat completions for, in the chat format.
 - `Temperature`: what sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
 - `TopP`: an alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass.
