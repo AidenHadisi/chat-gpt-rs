@@ -1,5 +1,5 @@
 //! OpenAI API client.
-//! 
+//!
 //! Communicates with the OpenAI API to send chat requests and receive chat completions.
 
 use reqwest::{
@@ -29,7 +29,7 @@ impl Api {
     /// Create a new API client.
     pub fn new(key: Token) -> Api {
         let mut headers = HeaderMap::new();
-        headers.insert(AUTHORIZATION, HeaderValue::from_str(key.to_string().as_str()).unwrap());
+        headers.insert(AUTHORIZATION, key.into());
         headers.insert(CONTENT_TYPE, HeaderValue::from_static("application/json"));
         Api {
             organization_id: None,
@@ -46,22 +46,16 @@ impl Api {
     /// Send a chat request to the OpenAI API.
     pub async fn chat(&self, r: Request) -> Result<Response> {
         let url = format!("{}{}", Self::BASE_URL, Self::CHAT_URL);
-        let res = self.client.post(&url).json(&r);
-        let res = if let Some(organization_id) = &self.organization_id {
-            res.header("OpenAI-Organization", organization_id)
-        } else {
-            res
-        };
-
-        let res = res.send().await?;
+        let mut req = self.client.post(&url);
+        if let Some(organization_id) = &self.organization_id {
+            req = req.header("OpenAI-Organization", organization_id);
+        }
+        let res = req.json(&r).send().await?;
 
         //if status is ok, return as Response json, otherwise return as ApiError
-        if res.status().is_success() {
-            let res = res.json::<Response>().await?;
-            Ok(res)
-        } else {
-            let err = res.json::<OpenAIErrorResponse>().await?;
-            Err(Error::ApiError(err))
+        match res.status().is_success() {
+            true => Ok(res.json::<Response>().await?),
+            false => Err(Error::ApiError(res.json::<OpenAIErrorResponse>().await?)),
         }
     }
 }

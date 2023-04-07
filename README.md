@@ -1,6 +1,14 @@
 # ChatGPT Rust
 
-Communicate with OpenAi's GPT3.5 and GPT4 (ChatGPT) API.
+This Rust crate provides an API client for communicating with OpenAI's GPT-3.5 and GPT-4 (ChatGPT) API. The Api struct provides methods for sending requests and receiving responses from the API.
+
+## Installation
+Add this to your Cargo.toml:
+```toml
+[dependencies]
+chat_gpt_rs = "1.4.0"
+
+```
 
 ## Usage
     
@@ -25,7 +33,7 @@ async fn main() {
     } else {
         println!("Error: {:?}", response.err());
     }
-}   
+} 
 ```
 
 ## Additional Configuration

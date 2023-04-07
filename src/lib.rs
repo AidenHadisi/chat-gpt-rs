@@ -1,9 +1,10 @@
-//! An API Client to communicate with the OpenAI's GPT-3.5 and GPT-4 aka ChatGPT API.
+//! This crate provides an API client for communicating with OpenAI's GPT-3.5 and GPT-4 (ChatGPT) API.
+//! The Api struct provides methods for sending requests and receiving responses from the API.
 //!
 //! # Example
 //! ```rs
 //! use chat_gpt_rs::prelude::*;
-//! 
+//!
 //! #[tokio::main]
 //! async fn main() {
 //!     let token = Token::new("YOUR_API_KEY");
@@ -24,7 +25,7 @@
 //!     }
 //! }
 //! ```
-//! 
+//!
 //! ## Additional Configuration
 //! Additional configuration can be added to the [request::Request] struct.
 //! For more information, see the [OpenAI API documentation](https://platform.openai.com/docs/api-reference/completions).

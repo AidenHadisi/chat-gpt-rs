@@ -1,3 +1,4 @@
+use reqwest::header::HeaderValue;
 use std::fmt::Display;
 
 pub struct Token(String);
@@ -14,4 +15,8 @@ impl Display for Token {
     }
 }
 
-
+impl From<Token> for HeaderValue {
+    fn from(token: Token) -> HeaderValue {
+        HeaderValue::from_str(&token.to_string()).unwrap()
+    }
+}
